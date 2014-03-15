@@ -27,16 +27,17 @@ public class Timer {
 			 */
 			for(int i = 2; i >= 0; i--){
 				timeArr[i] += off;
-				if(timeArr[i] >= 60){
+				off = 0;
+				while(timeArr[i] >= 60){
 					/* offset > 0 */
 					timeArr[i] -= 60;
-					off = 1;
-				}else if(timeArr[i] < 0){
+					off++;
+				}
+				while(timeArr[i] < 0){
 					/* offset < 0 */
 					timeArr[i] += 60;
-					off = -1;
-				}else
-					off = 0;
+					off--;
+				}
 			}
 			
 			fixTime += getStr(timeArr[0])+":"+getStr(timeArr[1])+":"+getStr(timeArr[2])+","+timeArr[3];
